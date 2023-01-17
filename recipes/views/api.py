@@ -23,18 +23,6 @@ class RecipeAPIv2ViewSet(ModelViewSet):
     pagination_class = RecipeAPIv2Pagination
 
 
-class RecipeAPIv2List(ListCreateAPIView):
-    queryset = Recipe.objects.get_published()
-    serializer_class = RecipeSerializer
-    pagination_class = RecipeAPIv2Pagination
-
-
-class RecipeAPIv2Detail(RetrieveUpdateDestroyAPIView):
-    queryset = Recipe.objects.get_published()
-    serializer_class = RecipeSerializer
-    pagination_class = RecipeAPIv2Pagination
-
-
 @api_view()
 def tag_api_detail(request, pk):
     tag = get_object_or_404(
