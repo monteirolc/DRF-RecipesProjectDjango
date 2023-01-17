@@ -27,7 +27,10 @@ def recipe_cover_update(sender, instance, *args, **kwargs):
     if old_instance:
         return
 
-    is_new_cover = old_instance.cover != instance.cover
+    try:
+        is_new_cover = old_instance.cover != instance.cover
 
-    if is_new_cover:
-        delete_cover(old_instance)
+        if is_new_cover:
+            delete_cover(old_instance)
+    except:  # noqa
+        return
